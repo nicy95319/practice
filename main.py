@@ -15,7 +15,6 @@ def read_root():
   cur.close()
   conn.close()
 
-  # 組裝簡單的 HTML 畫面供測試
   html_content = """
     <html>
     <head>
@@ -104,7 +103,7 @@ def register_event(
   )
 
 
-# 4. 查看特定活動的報名清單 API (對應組員 C 的任務)
+# 4. 查看特定活動的報名清單 API (對應組員 C 的任務 - 你的功能)
 @app.get("/events/{event_id}/registrations", response_class=HTMLResponse)
 def get_registrations(event_id: int):
   conn = get_db_connection()
@@ -115,12 +114,12 @@ def get_registrations(event_id: int):
   event = cur.fetchone()
 
   if not event:
+    cur.close()
+    conn.close()
     raise HTTPException(status_code=404, detail="找不到此活動")
 
   # 取得該活動的所有報名名單
-  cur.execute(
-      "SELECT * FROM registrations WHERE event_id = %s;", (event_id,)
-  )
+  cur.execute("SELECT * FROM registrations WHERE event_id = %s;", (event_id,))
   regs = cur.fetchall()
 
   cur.close()
@@ -128,7 +127,7 @@ def get_registrations(event_id: int):
 
   html = f"""
     <html>
-    <head><title>{event['title']} - 報名清單</title></head>
+    <head><title>{event['title']} 報名清單</title></head>
     <body style="font-family: Arial; margin: 40px;">
         <h2>📌 活動：{event['title']}</h2>
         <p><b>活動說明：</b>{event['description']}</p>

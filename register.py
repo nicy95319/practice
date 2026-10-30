@@ -1,12 +1,12 @@
 import sqlite3
 
-# 資料庫檔案名稱
+
 DB_NAME = 'app.db'
 
 def get_db_connection():
     """建立並傳回資料庫連線"""
     conn = sqlite3.connect(DB_NAME)
-    conn.row_factory = sqlite3.Row  # 讓查詢結果可以用欄位名稱存取
+    conn.row_factory = sqlite3.Row 
     return conn
 
 def init_db():
@@ -14,7 +14,7 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # 建立 events 資料表
+   
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -24,7 +24,7 @@ def init_db():
         )
     ''')
     
-    # 建立 registrations 資料表
+   
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS registrations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +35,7 @@ def init_db():
         )
     ''')
     
-    # 如果 events 資料表是空的，自動插入範例資料
+   
     cursor.execute("SELECT COUNT(*) FROM events")
     if cursor.fetchone()[0] == 0:
         sample_events = [
@@ -101,13 +101,13 @@ def register_event():
         conn.close()
 
 def main():
-    # 1. 確保資料庫與資料表已初始化
+   
     init_db()
     
-    # 2. 顯示活動清單
+    
     events = show_events()
     
-    # 3. 詢問是否要進行報名
+    
     if events:
         choice = input("\n是否要進行報名？(y/n): ").strip().lower()
         if choice == 'y':

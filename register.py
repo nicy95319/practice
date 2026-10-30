@@ -14,7 +14,7 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # 建立 events 資料表
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

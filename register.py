@@ -14,11 +14,7 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-<<<<<<< HEAD
    
-=======
-    
->>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

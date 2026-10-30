@@ -3,26 +3,11 @@ from fastapi import FastAPI
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-<<<<<<< HEAD
+# 設定資料庫連線資訊（請確認密碼是否正確，例如你的密碼是 1234 或 12345）
 DB_HOST = "localhost"
 DB_NAME = "practice"
 DB_USER = "postgres"
-DB_PASSWORD = "12345"
-=======
-<<<<<<< HEAD
-# 請將這裡的連線資訊修改為你們自己的 PostgreSQL 設定
-DB_HOST = "localhost"
-DB_NAME = "practice"  # 記得改成你們開的資料庫名稱
-DB_USER = "postgres"
-DB_PASSWORD = "1234"  # 記得改成你們的密碼
-=======
-# �бN�o�̪��s�u��T�קאּ�A�̦ۤv�� PostgreSQL �]�w
-DB_HOST = "localhost"
-DB_NAME = "practice"  # �O�o�令�A�̶}����Ʈw�W��
-DB_USER = "postgres"
-DB_PASSWORD = "03250801"  # �O�o�令�A�̪��K�X
->>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9
->>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
+DB_PASSWORD = "12345"  # 依你實際設定的密碼為主
 DB_PORT = "5432"
 
 
@@ -33,18 +18,6 @@ def get_db_connection():
       user=DB_USER,
       password=DB_PASSWORD,
       port=DB_PORT,
-<<<<<<< HEAD
-      cursor_factory=RealDictCursor,
+      cursor_factory=RealDictCursor,  # 讓查詢結果可以直接轉成字典格式
   )
   return conn
-=======
-<<<<<<< HEAD
-      cursor_factory=RealDictCursor,  # 讓查詢結果可以直接轉成字典格式，方便回傳 JSON
-  )
-  return conn
-=======
-      cursor_factory=RealDictCursor,  # ���d�ߵ��G�i�H�����ন�r��榡�A��K�^�� JSON
-  )
-  return conn
->>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9
->>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc

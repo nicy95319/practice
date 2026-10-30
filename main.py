@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from database import get_db_connection
+=======
+﻿from database import get_db_connection
+>>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9
 from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse
 
@@ -145,4 +149,8 @@ def get_registrations(event_id: int):
     </body>
     </html>
     """
+<<<<<<< HEAD
   return html
+=======
+  return html
+>>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9

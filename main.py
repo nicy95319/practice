@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿from database import get_db_connection
+=======
+<<<<<<< HEAD
+from database import get_db_connection
+=======
+﻿from database import get_db_connection
+>>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
 from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse
 
@@ -15,6 +23,10 @@ def read_root():
   cur.close()
   conn.close()
 
+<<<<<<< HEAD
+=======
+  # 組裝簡單的 HTML 畫面供測試
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
   html_content = """
     <html>
     <head>
@@ -103,7 +115,11 @@ def register_event(
   )
 
 
+<<<<<<< HEAD
 # 4. 查看特定活動的報名清單 API (對應組員 C 的任務 - 你的功能)
+=======
+# 4. 查看特定活動的報名清單 API (對應組員 C 的任務)
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
 @app.get("/events/{event_id}/registrations", response_class=HTMLResponse)
 def get_registrations(event_id: int):
   conn = get_db_connection()
@@ -114,12 +130,21 @@ def get_registrations(event_id: int):
   event = cur.fetchone()
 
   if not event:
+<<<<<<< HEAD
     cur.close()
     conn.close()
     raise HTTPException(status_code=404, detail="找不到此活動")
 
   # 取得該活動的所有報名名單
   cur.execute("SELECT * FROM registrations WHERE event_id = %s;", (event_id,))
+=======
+    raise HTTPException(status_code=404, detail="找不到此活動")
+
+  # 取得該活動的所有報名名單
+  cur.execute(
+      "SELECT * FROM registrations WHERE event_id = %s;", (event_id,)
+  )
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
   regs = cur.fetchall()
 
   cur.close()
@@ -127,7 +152,11 @@ def get_registrations(event_id: int):
 
   html = f"""
     <html>
+<<<<<<< HEAD
     <head><title>{event['title']} 報名清單</title></head>
+=======
+    <head><title>{event['title']} - 報名清單</title></head>
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
     <body style="font-family: Arial; margin: 40px;">
         <h2>📌 活動：{event['title']}</h2>
         <p><b>活動說明：</b>{event['description']}</p>
@@ -144,4 +173,12 @@ def get_registrations(event_id: int):
     </body>
     </html>
     """
+<<<<<<< HEAD
   return html
+=======
+<<<<<<< HEAD
+  return html
+=======
+  return html
+>>>>>>> e0555c7b4399451fa3dfbdc01b6663e22b9fcda9
+>>>>>>> 3140d04d80c4c9104b7374c78cbc1c9e8bf065dc
